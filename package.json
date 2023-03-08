@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "glogin": "clasp login",
     "glogout": "clasp logout",
-    "gcreate": "clasp create --title 'React test' --rootDir ./app-scripts",
+    "gcreate": "clasp create --title 'React test 2' --rootDir ./app-scripts",
     "gclone": "clasp clone --rootDir ./app-scripts",
     "gpull": "clasp pull",
     "gpush": "clasp push",
@@ -18,10 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
     "@google/clasp": "^2.4.2",
-    "@mui/material": "^5.11.12",
     "parcel": "^2.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
