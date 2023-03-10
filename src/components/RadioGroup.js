@@ -47,7 +47,7 @@ export default function RadioGroupCustom(props) {
       <div className='mx-auto w-full'>
         <Tooltip message={label}>
           <label
-            className='block lg:h-10 text-gray-700 sm:text-xl lg:text-sm font-bold mb-2'
+            className='block lg:h-10 text-gray-500 sm:text-3xl lg:text-sm font-bold mb-2'
             style={{
               overflow: 'hidden',
               display: '-webkit-box',
@@ -88,7 +88,7 @@ export default function RadioGroupCustom(props) {
                   <>
                     <div className='flex w-full items-center justify-between'>
                       <div className='flex items-center'>
-                        <div className='text-sm'>
+                        <div className='sm:text-3xl lg:text-sm'>
                           <RadioGroup.Label
                             as='p'
                             className={`font-medium  ${

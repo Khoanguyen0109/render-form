@@ -80,7 +80,7 @@ function FormTab(props) {
 
       <div className='flex justify-end mt-12'>
         <button
-          className='bg-blue-500 hover:bg-blue-700 text-white w-32 font-bold py-2 px-4 rounded'
+          className='bg-blue-500 hover:bg-blue-700 text-white sm:text-4xl lg:text-sm font-bold sm:py-6 lg:py-4 sm:px-10 lg:px-6 rounded'
           type='submit'
         >
           {isLast ? 'Submit' : 'Next'}
