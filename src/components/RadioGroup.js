@@ -43,7 +43,7 @@ export default function RadioGroupCustom(props) {
   const [selected, setSelected] = useState();
 
   return (
-    <div className='w-full  mb-8'>
+    <div className='w-full  mb-6'>
       <div className='mx-auto w-full'>
         <Tooltip message={label}>
           <label
@@ -91,7 +91,7 @@ export default function RadioGroupCustom(props) {
                         <div className='sm:text-3xl lg:text-sm'>
                           <RadioGroup.Label
                             as='p'
-                            className={`font-medium  ${
+                            className={`font-normal  ${
                               checked ? 'text-white' : 'text-gray-900'
                             }`}
                           >
