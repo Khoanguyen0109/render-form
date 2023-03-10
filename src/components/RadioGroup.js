@@ -47,7 +47,7 @@ export default function RadioGroupCustom(props) {
       <div className='mx-auto w-full'>
         <Tooltip message={label}>
           <label
-            className='block lg:h-10 text-gray-700 text-sm font-bold mb-2'
+            className='block lg:h-10 text-gray-700 sm:text-xl lg:text-sm font-bold mb-2'
             style={{
               overflow: 'hidden',
               display: '-webkit-box',

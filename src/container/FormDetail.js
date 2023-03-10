@@ -44,12 +44,12 @@ function FormDetail(props) {
     <SkeletonForm />
   ) : (
     <>
-      <div>
+      <div className='flex items-start'>
         <button className='bg-transparent font-semibold ' onClick={onBack}>
           <ArrowLeftIcon className='h-6 w-6 text-black' />
         </button>
         <div className='mx-auto max-w-2xl lg:text-center'>
-          <p className='mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
+          <p className='lg:mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
             {formName}
           </p>
         </div>
