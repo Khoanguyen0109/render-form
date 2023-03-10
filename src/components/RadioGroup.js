@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
+import { useController } from 'react-hook-form';
+import Tooltip from './Tooltip';
 
 const plans = [
   {
@@ -28,25 +30,48 @@ const plans = [
   },
 ];
 
-export default function RadioGroupCustom() {
-  const [selected, setSelected] = useState(plans[0]);
+export default function RadioGroupCustom(props) {
+  const { label, control, options, defaultValue, rules, name } = props;
+  const {
+    field: { ref, onBlur, ...mainProps },
+    fieldState: { error },
+  } = useController({
+    name,
+    control,
+    rules,
+  });
+  const [selected, setSelected] = useState();
 
   return (
-    <div className='w-full px-4 py-16'>
+    <div className='w-full  mb-8'>
       <div className='mx-auto w-full'>
-        <label
-          className='block text-gray-700 text-sm font-bold mb-2'
-          htmlFor='username'
+        <Tooltip message={label}>
+          <label
+            className='block lg:h-10 text-gray-700 text-sm font-bold mb-2'
+            style={{
+              overflow: 'hidden',
+              display: '-webkit-box',
+              '-webkit-line-clamp': '2',
+              '-webkit-box-orient': 'vertical',
+            }}
+            htmlFor={name}
+          >
+            {label}
+          </label>
+        </Tooltip>
+        <RadioGroup
+          value={selected}
+          onChange={(e) => {
+            mainProps.onChange(e);
+            setSelected(e);
+          }}
         >
-          Username
-        </label>
-        <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className='sr-only'>Server size</RadioGroup.Label>
           <div class='grid sm:grid-cols-1 md:grid-cols-2  gap-4'>
-            {plans.map((plan) => (
+            {options.map((option) => (
               <RadioGroup.Option
-                key={plan.name}
-                value={plan}
+                key={option.value}
+                value={option}
                 className={({ active, checked }) =>
                   `${
                     active
@@ -56,7 +81,7 @@ export default function RadioGroupCustom() {
                   ${
                     checked ? 'bg-sky-900 bg-opacity-75 text-white' : 'bg-white'
                   }
-                    relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
+                     flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                 }
               >
                 {({ active, checked }) => (
@@ -70,7 +95,7 @@ export default function RadioGroupCustom() {
                               checked ? 'text-white' : 'text-gray-900'
                             }`}
                           >
-                            {plan.name}
+                            {option.label}
                           </RadioGroup.Label>
                           <RadioGroup.Description
                             as='span'
@@ -78,11 +103,7 @@ export default function RadioGroupCustom() {
                               checked ? 'text-sky-100' : 'text-gray-500'
                             }`}
                           >
-                            <span>
-                              {plan.ram}/{plan.cpus}
-                            </span>{' '}
-                            <span aria-hidden='true'>&middot;</span>{' '}
-                            <span>{plan.disk}</span>
+                            <span>{option.description}</span>{' '}
                           </RadioGroup.Description>
                         </div>
                       </div>
