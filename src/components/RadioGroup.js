@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { useController } from 'react-hook-form';
 import Tooltip from './Tooltip';
@@ -31,16 +31,19 @@ const plans = [
 ];
 
 export default function RadioGroupCustom(props) {
-  const { label, control, options, defaultValue, rules, name } = props;
+  const { label, control, options, rules, name } = props;
   const {
-    field: { ref, onBlur, ...mainProps },
+    field,
     fieldState: { error },
   } = useController({
     name,
     control,
     rules,
   });
-  const [selected, setSelected] = useState();
+
+  const [selected, setSelected] = useState(
+    options.find((op) => parseInt(op.value) == parseInt(field.value?.value))
+  );
 
   return (
     <div className='w-full  mb-6'>
@@ -62,15 +65,15 @@ export default function RadioGroupCustom(props) {
         <RadioGroup
           value={selected}
           onChange={(e) => {
-            mainProps.onChange(e);
             setSelected(e);
+            field.onChange(e);
           }}
         >
           <RadioGroup.Label className='sr-only'>Server size</RadioGroup.Label>
           <div class='grid sm:grid-cols-1 md:grid-cols-2  gap-4'>
             {options.map((option) => (
               <RadioGroup.Option
-                key={option.value}
+                key={option.name}
                 value={option}
                 className={({ active, checked }) =>
                   `${
@@ -120,6 +123,9 @@ export default function RadioGroupCustom(props) {
           </div>
         </RadioGroup>
       </div>
+      {error?.type === 'required' && (
+        <p className='text-red-500'>This field is required</p>
+      )}
     </div>
   );
 }

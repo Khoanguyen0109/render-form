@@ -14,7 +14,9 @@ export default function Select(props) {
     control,
     rules,
   });
-  const [selected, setSelected] = useState(multiple ? [] : null);
+  const [selected, setSelected] = useState(
+    mainProps.value ? mainProps.value : multiple ? [] : null
+  );
   return (
     <div className=' w-full lg:w-80  mb-6 '>
       <Listbox

@@ -54,7 +54,12 @@ function FormDetail(props) {
           </p>
         </div>
       </div>
-      <Tabs tabs={groupByField} onSaveData={onSaveData} onSubmit={onSubmit} />
+      <Tabs
+        tabs={groupByField}
+        formData={formData}
+        onSaveData={onSaveData}
+        onSubmit={onSubmit}
+      />
       {/* <Select />
         <Input />
 

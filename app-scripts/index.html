@@ -27172,7 +27172,6 @@ function App() {
         try {
             setLoading(true);
             const res = await (0, _axiosDefault.default).get("https://script.google.com/macros/s/AKfycbwc6zsfumMrVjMwaSnku8NZxL2t5WJjtBK2LlXSkzx1CGptTvtjc4EBl5sBxnYqXJdgXQ/exec");
-            console.log("res :>> ", res);
             setData(res.data.data);
             const unique = [
                 ...new Map(res.data.data.map((item)=>[
@@ -27202,7 +27201,7 @@ function App() {
                         }, void 0, false, void 0, void 0)
                     }, void 0, false, {
                         fileName: "src/App.js",
-                        lineNumber: 52,
+                        lineNumber: 51,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27213,23 +27212,23 @@ function App() {
                         }, void 0, false, void 0, void 0)
                     }, void 0, false, {
                         fileName: "src/App.js",
-                        lineNumber: 56,
+                        lineNumber: 55,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/App.js",
-                lineNumber: 51,
+                lineNumber: 50,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "src/App.js",
-            lineNumber: 49,
+            lineNumber: 48,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/App.js",
-        lineNumber: 48,
+        lineNumber: 47,
         columnNumber: 5
     }, this);
 }
@@ -44976,6 +44975,7 @@ function FormDetail(props) {
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
                 tabs: groupByField,
+                formData: formData,
                 onSaveData: onSaveData,
                 onSubmit: onSubmit
             }, void 0, false, {
@@ -61492,160 +61492,170 @@ const plans = [
 ];
 function RadioGroupCustom(props) {
     _s();
-    const { label , control , options , defaultValue , rules , name  } = props;
-    const { field: { ref , onBlur , ...mainProps } , fieldState: { error  }  } = (0, _reactHookForm.useController)({
+    const { label , control , options , rules , name  } = props;
+    const { field , fieldState: { error  }  } = (0, _reactHookForm.useController)({
         name,
         control,
         rules
     });
-    const [selected, setSelected] = (0, _react.useState)();
+    const [selected, setSelected] = (0, _react.useState)(options.find((op)=>parseInt(op.value) == parseInt(field.value?.value)));
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "w-full mb-6",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "mx-auto w-full",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tooltipDefault.default), {
-                    message: label,
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                        className: "block lg:h-10 text-gray-500 sm:text-3xl lg:text-sm font-bold mb-2",
-                        style: {
-                            overflow: "hidden",
-                            display: "-webkit-box",
-                            "-webkit-line-clamp": "2",
-                            "-webkit-box-orient": "vertical"
-                        },
-                        htmlFor: name,
-                        children: label
-                    }, void 0, false, {
-                        fileName: "src/components/RadioGroup.js",
-                        lineNumber: 49,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "src/components/RadioGroup.js",
-                    lineNumber: 48,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup), {
-                    value: selected,
-                    onChange: (e)=>{
-                        mainProps.onChange(e);
-                        setSelected(e);
-                    },
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup).Label, {
-                            className: "sr-only",
-                            children: "Server size"
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mx-auto w-full",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tooltipDefault.default), {
+                        message: label,
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            className: "block lg:h-10 text-gray-500 sm:text-3xl lg:text-sm font-bold mb-2",
+                            style: {
+                                overflow: "hidden",
+                                display: "-webkit-box",
+                                "-webkit-line-clamp": "2",
+                                "-webkit-box-orient": "vertical"
+                            },
+                            htmlFor: name,
+                            children: label
                         }, void 0, false, {
                             fileName: "src/components/RadioGroup.js",
-                            lineNumber: 69,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "grid sm:grid-cols-1 md:grid-cols-2 gap-4",
-                            children: options.map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup).Option, {
-                                    value: option,
-                                    className: ({ active , checked  })=>`${active ? "ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300" : ""}
-                  ${checked ? "bg-sky-900 bg-opacity-75 text-white" : "bg-white"}
-                     flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`,
-                                    children: ({ active , checked  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "flex w-full items-center justify-between",
-                                                children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                        className: "flex items-center",
-                                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                            className: "sm:text-3xl lg:text-sm",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup).Label, {
-                                                                    as: "p",
-                                                                    className: `font-normal  ${checked ? "text-white" : "text-gray-900"}`,
-                                                                    children: option.label
-                                                                }, void 0, false, {
-                                                                    fileName: "src/components/RadioGroup.js",
-                                                                    lineNumber: 92,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup).Description, {
-                                                                    as: "span",
-                                                                    className: `inline ${checked ? "text-sky-100" : "text-gray-500"}`,
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                            children: option.description
-                                                                        }, void 0, false, {
-                                                                            fileName: "src/components/RadioGroup.js",
-                                                                            lineNumber: 106,
-                                                                            columnNumber: 29
-                                                                        }, this),
-                                                                        " "
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "src/components/RadioGroup.js",
-                                                                    lineNumber: 100,
-                                                                    columnNumber: 27
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "src/components/RadioGroup.js",
-                                                            lineNumber: 91,
-                                                            columnNumber: 25
-                                                        }, this)
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/RadioGroup.js",
-                                                        lineNumber: 90,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    checked && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                        className: "shrink-0 text-white",
-                                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(CheckIcon, {
-                                                            className: "h-6 w-6"
-                                                        }, void 0, false, {
-                                                            fileName: "src/components/RadioGroup.js",
-                                                            lineNumber: 112,
-                                                            columnNumber: 27
-                                                        }, this)
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/RadioGroup.js",
-                                                        lineNumber: 111,
-                                                        columnNumber: 25
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/RadioGroup.js",
-                                                lineNumber: 89,
-                                                columnNumber: 21
-                                            }, this)
-                                        }, void 0, false)
-                                }, option.value, false, {
-                                    fileName: "src/components/RadioGroup.js",
-                                    lineNumber: 72,
-                                    columnNumber: 15
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "src/components/RadioGroup.js",
-                            lineNumber: 70,
+                            lineNumber: 52,
                             columnNumber: 11
                         }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/RadioGroup.js",
-                    lineNumber: 62,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/RadioGroup.js",
-            lineNumber: 47,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+                    }, void 0, false, {
+                        fileName: "src/components/RadioGroup.js",
+                        lineNumber: 51,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup), {
+                        value: selected,
+                        onChange: (e)=>{
+                            setSelected(e);
+                            field.onChange(e);
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup).Label, {
+                                className: "sr-only",
+                                children: "Server size"
+                            }, void 0, false, {
+                                fileName: "src/components/RadioGroup.js",
+                                lineNumber: 72,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                class: "grid sm:grid-cols-1 md:grid-cols-2 gap-4",
+                                children: options.map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup).Option, {
+                                        value: option,
+                                        className: ({ active , checked  })=>`${active ? "ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300" : ""}
+                  ${checked ? "bg-sky-900 bg-opacity-75 text-white" : "bg-white"}
+                     flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`,
+                                        children: ({ active , checked  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "flex w-full items-center justify-between",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                            className: "flex items-center",
+                                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                                className: "sm:text-3xl lg:text-sm",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup).Label, {
+                                                                        as: "p",
+                                                                        className: `font-normal  ${checked ? "text-white" : "text-gray-900"}`,
+                                                                        children: option.label
+                                                                    }, void 0, false, {
+                                                                        fileName: "src/components/RadioGroup.js",
+                                                                        lineNumber: 95,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.RadioGroup).Description, {
+                                                                        as: "span",
+                                                                        className: `inline ${checked ? "text-sky-100" : "text-gray-500"}`,
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                                                children: option.description
+                                                                            }, void 0, false, {
+                                                                                fileName: "src/components/RadioGroup.js",
+                                                                                lineNumber: 109,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            " "
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "src/components/RadioGroup.js",
+                                                                        lineNumber: 103,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "src/components/RadioGroup.js",
+                                                                lineNumber: 94,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "src/components/RadioGroup.js",
+                                                            lineNumber: 93,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        checked && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                            className: "shrink-0 text-white",
+                                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(CheckIcon, {
+                                                                className: "h-6 w-6"
+                                                            }, void 0, false, {
+                                                                fileName: "src/components/RadioGroup.js",
+                                                                lineNumber: 115,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "src/components/RadioGroup.js",
+                                                            lineNumber: 114,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/components/RadioGroup.js",
+                                                    lineNumber: 92,
+                                                    columnNumber: 21
+                                                }, this)
+                                            }, void 0, false)
+                                    }, option.name, false, {
+                                        fileName: "src/components/RadioGroup.js",
+                                        lineNumber: 75,
+                                        columnNumber: 15
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "src/components/RadioGroup.js",
+                                lineNumber: 73,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/RadioGroup.js",
+                        lineNumber: 65,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/RadioGroup.js",
+                lineNumber: 50,
+                columnNumber: 7
+            }, this),
+            error?.type === "required" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                className: "text-red-500",
+                children: "This field is required"
+            }, void 0, false, {
+                fileName: "src/components/RadioGroup.js",
+                lineNumber: 127,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "src/components/RadioGroup.js",
-        lineNumber: 46,
+        lineNumber: 49,
         columnNumber: 5
     }, this);
 }
 exports.default = RadioGroupCustom;
-_s(RadioGroupCustom, "msY14zZdnzh3M/bLZrkJMhS4mqk=", false, function() {
+_s(RadioGroupCustom, "bwidx+ZzUs1/xB+7rPTckl3hTng=", false, function() {
     return [
         (0, _reactHookForm.useController)
     ];
@@ -61665,7 +61675,7 @@ function CheckIcon(props) {
                 opacity: "0.2"
             }, void 0, false, {
                 fileName: "src/components/RadioGroup.js",
-                lineNumber: 130,
+                lineNumber: 136,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
@@ -61676,13 +61686,13 @@ function CheckIcon(props) {
                 strokeLinejoin: "round"
             }, void 0, false, {
                 fileName: "src/components/RadioGroup.js",
-                lineNumber: 131,
+                lineNumber: 137,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/RadioGroup.js",
-        lineNumber: 129,
+        lineNumber: 135,
         columnNumber: 5
     }, this);
 }
@@ -61696,7 +61706,7 @@ $RefreshReg$(_c1, "CheckIcon");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@headlessui/react":"4Afcd","react-hook-form":"kRky9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Tooltip":"lNIdn"}],"6rTZu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@headlessui/react":"4Afcd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-hook-form":"kRky9","./Tooltip":"lNIdn"}],"6rTZu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c89 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -61721,7 +61731,7 @@ function Select(props) {
         control,
         rules
     });
-    const [selected, setSelected] = (0, _react.useState)(multiple ? [] : null);
+    const [selected, setSelected] = (0, _react.useState)(mainProps.value ? mainProps.value : multiple ? [] : null);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: " w-full lg:w-80 mb-6 ",
         children: [
@@ -61746,12 +61756,12 @@ function Select(props) {
                             children: label
                         }, void 0, false, {
                             fileName: "src/components/Select.js",
-                            lineNumber: 29,
+                            lineNumber: 31,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Select.js",
-                        lineNumber: 28,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61765,7 +61775,7 @@ function Select(props) {
                                         children: selected?.label
                                     }, void 0, false, {
                                         fileName: "src/components/Select.js",
-                                        lineNumber: 44,
+                                        lineNumber: 46,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -61775,18 +61785,18 @@ function Select(props) {
                                             "aria-hidden": "true"
                                         }, void 0, false, {
                                             fileName: "src/components/Select.js",
-                                            lineNumber: 46,
+                                            lineNumber: 48,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/Select.js",
-                                        lineNumber: 45,
+                                        lineNumber: 47,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Select.js",
-                                lineNumber: 43,
+                                lineNumber: 45,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.Transition), {
@@ -61807,7 +61817,7 @@ function Select(props) {
                                                             children: option.label
                                                         }, void 0, false, {
                                                             fileName: "src/components/Select.js",
-                                                            lineNumber: 72,
+                                                            lineNumber: 74,
                                                             columnNumber: 27
                                                         }, this),
                                                         selected ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -61817,12 +61827,12 @@ function Select(props) {
                                                                 "aria-hidden": "true"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/Select.js",
-                                                                lineNumber: 81,
+                                                                lineNumber: 83,
                                                                 columnNumber: 31
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "src/components/Select.js",
-                                                            lineNumber: 80,
+                                                            lineNumber: 82,
                                                             columnNumber: 29
                                                         }, this) : null
                                                     ]
@@ -61830,30 +61840,30 @@ function Select(props) {
                                             }
                                         }, index, false, {
                                             fileName: "src/components/Select.js",
-                                            lineNumber: 60,
+                                            lineNumber: 62,
                                             columnNumber: 19
                                         }, this);
                                     })
                                 }, void 0, false, {
                                     fileName: "src/components/Select.js",
-                                    lineNumber: 57,
+                                    lineNumber: 59,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/components/Select.js",
-                                lineNumber: 52,
+                                lineNumber: 54,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Select.js",
-                        lineNumber: 42,
+                        lineNumber: 44,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Select.js",
-                lineNumber: 20,
+                lineNumber: 22,
                 columnNumber: 7
             }, this),
             fieldState.error?.type === "required" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -61861,18 +61871,18 @@ function Select(props) {
                 children: "This field is required"
             }, void 0, false, {
                 fileName: "src/components/Select.js",
-                lineNumber: 99,
+                lineNumber: 101,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Select.js",
-        lineNumber: 19,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }
 exports.default = Select;
-_s(Select, "FtJRt47rZg9XzX54GkxCEBOYnHc=", false, function() {
+_s(Select, "wrnnTsBA6U+VMyYPNHIsyBO+oq8=", false, function() {
     return [
         (0, _reactHookForm.useController)
     ];
@@ -61906,14 +61916,15 @@ function classNames(...classes) {
 }
 function Tabs(props) {
     _s();
-    const { tabs , onSaveData , onSubmit  } = props;
+    const { tabs , formData , onSaveData , onSubmit  } = props;
     const [selectedIndex, setSelectedIndex] = (0, _react.useState)(0);
     const onNextChangeTab = (value)=>{
-        console.log("value :>> ", value);
         onSaveData(value);
         setSelectedIndex((preState)=>preState + 1);
     };
-    console.log("selectedIndex :>> ", selectedIndex);
+    const onBackTab = ()=>{
+        setSelectedIndex((preState)=>preState - 1);
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "w-full px-2 py-16 sm:px-0",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.Tab).Group, {
@@ -61924,32 +61935,30 @@ function Tabs(props) {
                     className: "flex space-x-2 rounded-xl bg-blue-900/20 p-1",
                     children: Object.keys(tabs).map((tab, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.Tab), {
                             className: ({ selected  })=>classNames("w-full rounded-lg py-2.5 sm:text-2xl lg:text-sm font-medium leading-5 text-blue-700", "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2", selected ? "bg-white shadow" : "text-blue-100 hover:bg-white/[0.12] hover:text-white"),
-                            children: [
-                                "Tab ",
-                                index + 1
-                            ]
-                        }, tab, true, {
+                            children: Object.keys(tabs).length > 10 ? index + 1 : `Tab ${index + 1}`
+                        }, tab, false, {
                             fileName: "src/components/Tab.js",
-                            lineNumber: 23,
+                            lineNumber: 24,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "src/components/Tab.js",
-                    lineNumber: 21,
+                    lineNumber: 22,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.Tab).Panels, {
                     className: "mt-2",
                     children: Object.values(tabs).map((tab, idx)=>{
-                        console.log("tab", tab);
                         const isLast = idx === Object.values(tabs).length - 1;
                         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react1.Tab).Panel, {
                             className: classNames("rounded-xl bg-white p-3 mt-10", "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"),
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formTabDefault.default), {
                                 idx: idx,
+                                formData: formData,
                                 onSubmit: isLast ? onSubmit : onNextChangeTab,
                                 items: tab,
-                                onNextChangeTab: onNextChangeTab
+                                onNextChangeTab: onNextChangeTab,
+                                onBackTab: onBackTab
                             }, void 0, false, {
                                 fileName: "src/components/Tab.js",
                                 lineNumber: 51,
@@ -61963,18 +61972,18 @@ function Tabs(props) {
                     })
                 }, void 0, false, {
                     fileName: "src/components/Tab.js",
-                    lineNumber: 39,
+                    lineNumber: 40,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/Tab.js",
-            lineNumber: 20,
+            lineNumber: 21,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/Tab.js",
-        lineNumber: 19,
+        lineNumber: 20,
         columnNumber: 5
     }, this);
 }
@@ -62013,8 +62022,11 @@ var _selectDefault = parcelHelpers.interopDefault(_select);
 var _s = $RefreshSig$();
 function FormTab(props) {
     _s();
-    const { items , idx , isLast , onSubmit  } = props;
-    const { control , formState: { errors  } , handleSubmit  } = (0, _reactHookForm.useForm)({});
+    const { items , formData , idx , isLast , onSubmit , onBackTab  } = props;
+    const { control , formState: { errors  } , handleSubmit  } = (0, _reactHookForm.useForm)({
+        defaultValues: formData
+    });
+    console.log("formData :>> ", formData);
     const switchItem = (i, index)=>{
         const showLabel = index === 0;
         const itemProps = {
@@ -62034,20 +62046,20 @@ function FormTab(props) {
                     type: i.type
                 }, void 0, false, {
                     fileName: "src/components/FormTab.js",
-                    lineNumber: 29,
+                    lineNumber: 32,
                     columnNumber: 11
                 }, this);
             case "select":
                 return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _selectDefault.default), {
                     ...itemProps,
-                    options: i.option.split("/").map((option)=>({
+                    options: i.option.split("/").map((option, index)=>({
                             label: option,
-                            value: option
+                            value: index
                         })),
                     multiple: i.type === "multi"
                 }, void 0, false, {
                     fileName: "src/components/FormTab.js",
-                    lineNumber: 33,
+                    lineNumber: 36,
                     columnNumber: 11
                 }, this);
             case "date":
@@ -62056,19 +62068,19 @@ function FormTab(props) {
                     placeholder: i.placeholder
                 }, void 0, false, {
                     fileName: "src/components/FormTab.js",
-                    lineNumber: 43,
+                    lineNumber: 46,
                     columnNumber: 16
                 }, this);
             case "radio":
                 return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _radioGroupDefault.default), {
                     ...itemProps,
-                    options: i.option.split("/").map((option)=>({
+                    options: i.option.split("/").map((option, index)=>({
                             label: option,
-                            value: option
+                            value: index
                         }))
                 }, void 0, false, {
                     fileName: "src/components/FormTab.js",
-                    lineNumber: 46,
+                    lineNumber: 49,
                     columnNumber: 11
                 }, this);
             default:
@@ -62076,21 +62088,19 @@ function FormTab(props) {
         }
     };
     const renderItem = (item)=>{
-        console.log("item", item);
         if (item.length > 1) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             children: item.map((i, index)=>{
                 return switchItem(i, index);
             })
         }, void 0, false, {
             fileName: "src/components/FormTab.js",
-            lineNumber: 62,
+            lineNumber: 64,
             columnNumber: 9
         }, this);
         else return item.map((i, index)=>{
             return switchItem(i, index);
         });
     };
-    console.log("Object.values(items).map()", Object.values(items));
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
         onSubmit: handleSubmit(onSubmit),
         children: [
@@ -62099,29 +62109,40 @@ function FormTab(props) {
                 children: Object.values(items).map((item)=>renderItem(item))
             }, void 0, false, {
                 fileName: "src/components/FormTab.js",
-                lineNumber: 77,
+                lineNumber: 78,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "flex justify-end mt-12",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    className: "bg-blue-500 hover:bg-blue-700 text-white sm:text-4xl lg:text-sm font-bold sm:py-6 lg:py-4 sm:px-10 lg:px-6 rounded",
-                    type: "submit",
-                    children: isLast ? "Submit" : "Next"
-                }, void 0, false, {
-                    fileName: "src/components/FormTab.js",
-                    lineNumber: 82,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
+                className: `flex ${idx !== 0 ? "justify-between" : "justify-end"}  mt-12`,
+                children: [
+                    idx !== 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: " text-blue-500 sm:text-4xl lg:text-sm font-bold sm:py-6 lg:py-4 sm:px-10 lg:px-6 rounded",
+                        onClick: onBackTab,
+                        children: "Back"
+                    }, void 0, false, {
+                        fileName: "src/components/FormTab.js",
+                        lineNumber: 88,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: "bg-blue-500 hover:bg-blue-700 text-white sm:text-4xl lg:text-sm font-bold sm:py-6 lg:py-4 sm:px-10 lg:px-6 rounded",
+                        type: "submit",
+                        children: isLast ? "Submit" : "Next"
+                    }, void 0, false, {
+                        fileName: "src/components/FormTab.js",
+                        lineNumber: 95,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/FormTab.js",
-                lineNumber: 81,
+                lineNumber: 82,
                 columnNumber: 7
             }, this)
         ]
     }, idx, true, {
         fileName: "src/components/FormTab.js",
-        lineNumber: 76,
+        lineNumber: 77,
         columnNumber: 5
     }, this);
 }

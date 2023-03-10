@@ -27,7 +27,6 @@ export function App() {
       const res = await axios.get(
         'https://script.google.com/macros/s/AKfycbwc6zsfumMrVjMwaSnku8NZxL2t5WJjtBK2LlXSkzx1CGptTvtjc4EBl5sBxnYqXJdgXQ/exec'
       );
-      console.log('res :>> ', res);
       setData(res.data.data);
       const unique = [
         ...new Map(

@@ -7,14 +7,15 @@ function classNames(...classes) {
 }
 
 export default function Tabs(props) {
-  const { tabs, onSaveData, onSubmit } = props;
+  const { tabs, formData, onSaveData, onSubmit } = props;
   const [selectedIndex, setSelectedIndex] = useState(0);
   const onNextChangeTab = (value) => {
-    console.log('value :>> ', value);
     onSaveData(value);
     setSelectedIndex((preState) => preState + 1);
   };
-  console.log('selectedIndex :>> ', selectedIndex);
+  const onBackTab = () => {
+    setSelectedIndex((preState) => preState - 1);
+  };
   return (
     <div className='w-full  px-2 py-16 sm:px-0'>
       <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
@@ -32,13 +33,12 @@ export default function Tabs(props) {
                 )
               }
             >
-              Tab {index + 1}
+              {Object.keys(tabs).length > 10 ? index + 1 : `Tab ${index + 1}`}
             </Tab>
           ))}
         </Tab.List>
         <Tab.Panels className='mt-2'>
           {Object.values(tabs).map((tab, idx) => {
-            console.log('tab', tab);
             const isLast = idx === Object.values(tabs).length - 1;
             return (
               <Tab.Panel
@@ -50,9 +50,11 @@ export default function Tabs(props) {
               >
                 <FormTab
                   idx={idx}
+                  formData={formData}
                   onSubmit={isLast ? onSubmit : onNextChangeTab}
                   items={tab}
                   onNextChangeTab={onNextChangeTab}
+                  onBackTab={onBackTab}
                 />
               </Tab.Panel>
             );

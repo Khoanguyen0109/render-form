@@ -6,12 +6,15 @@ import RadioGroupCustom from './RadioGroup';
 import Select from './Select';
 
 function FormTab(props) {
-  const { items, idx, isLast, onSubmit } = props;
+  const { items, formData, idx, isLast, onSubmit, onBackTab } = props;
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm({});
+  } = useForm({
+    defaultValues: formData,
+  });
+  console.log('formData :>> ', formData);
   const switchItem = (i, index) => {
     const showLabel = index === 0;
     const itemProps = {
@@ -32,9 +35,9 @@ function FormTab(props) {
         return (
           <Select
             {...itemProps}
-            options={i.option.split('/').map((option) => ({
+            options={i.option.split('/').map((option , index) => ({
               label: option,
-              value: option,
+              value: index,
             }))}
             multiple={i.type === 'multi'}
           />
@@ -45,9 +48,9 @@ function FormTab(props) {
         return (
           <RadioGroupCustom
             {...itemProps}
-            options={i.option.split('/').map((option) => ({
+            options={i.option.split('/').map((option, index) => ({
               label: option,
-              value: option,
+              value: index,
             }))}
           />
         );
@@ -56,7 +59,6 @@ function FormTab(props) {
     }
   };
   const renderItem = (item) => {
-    console.log('item', item);
     if (item.length > 1) {
       return (
         <div>
@@ -71,14 +73,25 @@ function FormTab(props) {
       });
     }
   };
-  console.log('Object.values(items).map()', Object.values(items));
   return (
     <form key={idx} onSubmit={handleSubmit(onSubmit)}>
       <div className='flex flex-wrap gap-x-24 gap-y-5 '>
         {Object.values(items).map((item) => renderItem(item))}
       </div>
 
-      <div className='flex justify-end mt-12'>
+      <div
+        className={`flex ${
+          idx !== 0 ? 'justify-between' : 'justify-end'
+        }  mt-12`}
+      >
+        {idx !== 0 && (
+          <button
+            className=' text-blue-500 sm:text-4xl lg:text-sm font-bold sm:py-6 lg:py-4 sm:px-10 lg:px-6 rounded'
+            onClick={onBackTab}
+          >
+            Back
+          </button>
+        )}
         <button
           className='bg-blue-500 hover:bg-blue-700 text-white sm:text-4xl lg:text-sm font-bold sm:py-6 lg:py-4 sm:px-10 lg:px-6 rounded'
           type='submit'
